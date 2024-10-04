@@ -1,6 +1,19 @@
 # Wheater API
 Sample solution for challenge [wheater api](https://roadmap.sh/projects/weather-api-wrapper-service) from [roadmap.sh](https://roadmap.sh)
 
+## API Documentation
+API spec is in [docs](./docs) directory
+
+## Tech Stack
+- Golang (programming language)
+- Redis (database cache)
+- Docker (Containerized)
+
+## Framework & Library
+- [GoFiber](https://gofiber.io/) (Http framework)
+- [Logrus](https://github.com/sirupsen/logrus) (logger)
+
+
 ## Installation
 Before you begin, ensure you have met the following requirements:  
 - You have Go installed on your machine.
