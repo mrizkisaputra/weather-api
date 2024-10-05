@@ -17,7 +17,7 @@ func init() {
 }
 
 func TestWeatherRepository_FetchWeather(t *testing.T) {
-	var repository = NewWeatherRepository(os.Getenv("WEATHER.API_KEY"))
+	var repository = NewWeatherRepository(os.Getenv("WEATHER.API_KEY"), nil)
 	//response, err := repository.FetchWeather("jakarta, indonesia", "", "")
 	response, err := repository.FetchWeather("jakarta, indonesia", "2024-10-04", "2024-10-04")
 	assert.Nil(t, err)

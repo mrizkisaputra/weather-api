@@ -20,5 +20,6 @@ func errorHandle(ctx *fiber.Ctx, err error) error {
 			Message: e.Message,
 		})
 	}
-	return nil
+
+	return ctx.SendStatus(fiber.StatusInternalServerError)
 }

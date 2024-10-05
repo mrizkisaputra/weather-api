@@ -13,9 +13,12 @@ func main() {
 		log.WithError(err).Panic("Error loading .env file")
 	}
 
+	rdb := config.NewRedisClient()
+
 	config.NewBootstrap(&config.Bootstrap{
-		App: app,
-		Log: log,
+		App:     app,
+		Log:     log,
+		RedisDB: rdb,
 	})
 
 	panic(app.Listen(":8080"))
