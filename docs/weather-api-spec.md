@@ -1,4 +1,4 @@
-# Wheater API
+# Weather API
 
 ## Get Current and Forecasted Weather
 - **Endpoint:** ``/api/weather``
@@ -13,19 +13,20 @@ Jika tidak ada tanggal1 atau tanggal2 yang ditentukan, permintaan akan mengambil
 
 - **Request Example**:  
   ```
-  http://localhost:8080/api/wheater/jakarta, indonesia
-  http://localhost:8080/api/wheater/jakarta, indonesia/2024-10-01/2024-10-10
+  http://localhost:8080/api/weather/jakarta, indonesia
+  http://localhost:8080/api/weather/jakarta, indonesia/2024-10-01/2024-10-10
   ```
 
 - **Response Example**:  
   ````json
   {
     "status": 200,
-    "latitude": -6.17148,
-    "longitude": 106.826,
-    "address": "Jakarta, Indonesia",
-    "timezone": "Asia/Jakarta",
-    "days": [
+    "data": {
+      "latitude": -6.17148,
+      "longitude": 106.826,
+      "address": "Jakarta, Indonesia",
+      "timezone": "Asia/Jakarta",
+      "days": [
         {
           "date": "2024-10-04",
           "datetimeEpoch": 1727974800,
@@ -55,18 +56,16 @@ Jika tidak ada tanggal1 atau tanggal2 yang ditentukan, permintaan akan mengambil
         },
         {...},
         {...},
-        {...},
-        {...},
-        {...},
-        {...},
-        {...},
-        {...},
-        {...},
-        {...},
-        {...},
-        {...},
-        {...},
-        {...},
-    ]
+        ...
+      ]
+    }
   }
   ````
+
+- **Response Error Example**:
+```json
+{
+  "status": 400,
+  "message": "Bad API Request: "
+}
+```
