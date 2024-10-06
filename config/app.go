@@ -6,6 +6,7 @@ import (
 	"github.com/sirupsen/logrus"
 	"os"
 	"wheater-api/internal/delivery/http"
+	"wheater-api/internal/delivery/http/middleware"
 	"wheater-api/internal/delivery/http/routes"
 	"wheater-api/internal/repositories"
 	"wheater-api/internal/usecase"
@@ -28,11 +29,13 @@ func NewBootstrap(config *Bootstrap) {
 	weatherHandler := http.NewWeatherController(*weatherUseCase)
 
 	//setup middleware
+	rateLimiterMiddleware := middleware.RateLimiterMiddleware()
 
 	//setup route
 	route := routes.Route{
-		App:               config.App,
-		WeatherController: weatherHandler,
+		App:                   config.App,
+		WeatherController:     weatherHandler,
+		RateLimiterMiddleware: rateLimiterMiddleware,
 	}
 	route.SetupRoutes()
 }

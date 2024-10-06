@@ -6,8 +6,9 @@ import (
 )
 
 type Route struct {
-	App               *fiber.App
-	WeatherController http.WeatherController
+	App                   *fiber.App
+	WeatherController     http.WeatherController
+	RateLimiterMiddleware fiber.Handler
 }
 
 func (r *Route) SetupRoutes() {
@@ -15,6 +16,7 @@ func (r *Route) SetupRoutes() {
 }
 
 func (r *Route) guestRoutes() {
+	r.App.Use(r.RateLimiterMiddleware)
 	r.App.Get("/api/weather/:location", r.WeatherController.GetCurrentAndForecastedWeather)
 	r.App.Get("/api/weather/:location/:date1/", r.WeatherController.GetCurrentAndForecastedWeather)
 	r.App.Get("/api/weather/:location/:date1/:date2", r.WeatherController.GetCurrentAndForecastedWeather)
