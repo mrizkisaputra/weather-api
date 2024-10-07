@@ -1,7 +1,7 @@
 # Wheater API #
 
 ## API Documentation
-API spec is in [docs](./docs/weather-api-spec) directory
+API spec is in [docs](./docs/weather-api-spec.md) directory
 
 
 ## Tech Stack
@@ -29,21 +29,20 @@ API spec is in [docs](./docs/weather-api-spec) directory
 Before you begin, ensure you have met the following requirements:
 1. You have Docker installed on your machine.
 2. Pull docker image ``docker image pull mrizkisaputra/weather-api``
-3. Create and Run docker container  
-    ```
-    # 1 create and run redis container
-    docker container run -d \
-    --name redis \
+3. Copy & paste on the terminal:
+   ```
+    docker run -d \
+    --name redis-container \
     --publish 6379:6379 \
     redis
-    
-    
-    # 2 create and run weatherapi container
-    docker container run -d \
-    --name weatherapi \
+   ```
+   ```
+    docker run -d \
+    --name weather-api-container \
+    --env REDIS.HOST=redis-container \
+    --env REDIS.PORT=6379 \
     --publish 8080:8080 \
-    -e REDIS_HOST=redis \
-    -e REDIS_PORT=6379 \
-    --link redis \
-    mrizkisaputra/weather-api
+    --link redis-container \
+    mrizkisaputra/weather-api:latest
     ```
+5. Access API on **postman** or **browser**: ``http://127.0.0.1:8080/api/weather/`` see API [doc](./docs/weather-api-spec.md)
