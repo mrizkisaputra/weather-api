@@ -28,7 +28,7 @@ API spec is in [docs](./docs/weather-api-spec.md) directory
 ### Run app with Docker
 Before you begin, ensure you have met the following requirements:
 1. You have Docker installed on your machine.
-2. Pull docker image ``docker image pull mrizkisaputra/weather-api``
+2. Pull docker image ``docker image pull mrizkisaputra/weather-api`` [mrizkisaputra/weather-api](https://hub.docker.com/r/mrizkisaputra/weather-api)
 3. Copy & paste on the terminal:
    ```
     docker run -d \
