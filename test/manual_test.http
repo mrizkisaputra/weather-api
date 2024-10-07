@@ -1,0 +1,3 @@
+#GET http://localhost:8080/api/weather/jakarta
+
+#GET http://localhost:8080/api/weather/jakarta/2024-10-
