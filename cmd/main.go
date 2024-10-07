@@ -1,6 +1,7 @@
 package main
 
 import (
+	"context"
 	"github.com/joho/godotenv"
 	"wheater-api/config"
 )
@@ -14,6 +15,9 @@ func main() {
 	}
 
 	rdb := config.NewRedisClient()
+	if err := rdb.Ping(context.Background()).Err(); err != nil {
+		panic(err)
+	}
 
 	config.NewBootstrap(&config.Bootstrap{
 		App:     app,
